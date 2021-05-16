@@ -85,5 +85,23 @@ namespace Selenium.UITest
                 Assert.Equal(privacyUrl, driver.Url);
             }
         }
+
+        [Fact]
+        [Trait("Category", "Smoke")]
+        public void PrivacyLink_Text()
+        {
+            using (IWebDriver driver = new ChromeDriver())
+            {
+                // got to Home url
+                driver.Navigate().GoToUrl(homeUrl);
+
+                // get link by link text
+                IWebElement linkText = driver.FindElement(By.LinkText("Privacy"));
+                linkText.Click();
+
+                Assert.Equal(privacyUrl, driver.Url);
+
+            }
+        }
     }
 }
